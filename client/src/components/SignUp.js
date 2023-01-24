@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 import user from "../services/userService"
+<<<<<<< HEAD
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+=======
+
+>>>>>>> 96c0fa0843ce9b6f2446c028bfa8a3d6723933c9
 import "../styles/styles.css"
 
 const SignUp = () => {
