@@ -20,15 +20,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <ProtectedRoute isAllowed={"isNotAuth"}><Home /></ProtectedRoute>,
+        element: <ProtectedRoute isAllowed={"isNotAuth"}><Home /></ProtectedRoute>
       },
       {
         path: "/login",
-        element: <ProtectedRoute isAllowed={"isNotAuth"}><Login /></ProtectedRoute>,
+        element: <Login />
       },
       {
         path: "/signup",
-        element: <ProtectedRoute isAllowed={"isNotAuth"}><SignUp /></ProtectedRoute>,
+        element: <SignUp />
       },
       {
         path: "/logout",
