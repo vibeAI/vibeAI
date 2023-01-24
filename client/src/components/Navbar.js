@@ -14,7 +14,7 @@ function Navbar() {
         <>
             <nav className="nav">
                 {<NavLink to="/"><img className="App-logo" alt="Logo" />VibeAI</NavLink>}
-                <div id='cajaTexto'>
+                <div id='menuList'>
                     <ul id='navbar' className={clicked ? "#navbar active" : "#navbar"}>
 
                         <li><NavLink id='navbar' to="/aboutUs">About Us</NavLink></li>

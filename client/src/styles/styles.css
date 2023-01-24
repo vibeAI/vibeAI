@@ -3,10 +3,12 @@
 :root {
     font-family: 'Montserrat', sans-serif;
     color: black;
+    /* --main-bg-color: #525DAD; */
+    --main-bg-color: #181629;
 }
 
 body {
-    background-color: #181629;
+    background-color: var(--main-bg-color);
 }
 
 .body {

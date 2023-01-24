@@ -5,7 +5,7 @@ import "../styles/styles.css"
 const Profile = () => {
   return (
     <>
-      <h2>Profile</h2>
+      <h2 style={{color:'white'}}>Profile</h2>
     </>
   );
 };
