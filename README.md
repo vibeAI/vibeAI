@@ -1,0 +1,2 @@
+# vibeAI
+Desafío de tripulaciones 
