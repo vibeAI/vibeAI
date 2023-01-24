@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import './styles/FormLogin_styles.css'
-import user from "../services/userService";
+import user from "../services/userService"
 
+import "../styles/styles.css"
 
 const SignUp = () => {
     const [username, setUsername] = useState("")

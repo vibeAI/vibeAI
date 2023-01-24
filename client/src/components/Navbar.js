@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import AuthConsumer from "../hooks/useAuth";
 
-import "./styles/navbar_styles.css"
-// import logo from "../#"
-
+import "../styles/styles.css"
 
 function Navbar() {
     const [clicked, setClicked] = useState(false)
