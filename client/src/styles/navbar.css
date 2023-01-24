@@ -1,0 +1,60 @@
+.nav {
+    background-color: white;
+}
+
+.App-logo {
+    height: fit-content;
+    margin-top: 50px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+    /* padding: 20px 40px; */
+    padding-top: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0, 06);
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: black;
+    transition: 300ms ease-in-out;
+
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    background-color: #181629;
+    color: white;
+}
+
+/* #navbar li a:hover::after,
+#navbar li a.active::after{
+    content: "";
+    width: 33%;
+    height: 2px;
+    background: #dd361c;
+    position: absolute;
+    bottom: -2px;
+    left: 20px;
+
+} */
