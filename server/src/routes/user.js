@@ -9,12 +9,6 @@ const router = express.Router()
 const Joi = require("joi");
 
 
-router.get('/all', async (req, res) => {
-    
-    res.send (await Users.find({}))
-    
-})
-
 const reqSchema = Joi.object({
     email: Joi.string()
       .required()
@@ -26,8 +20,6 @@ const reqSchema = Joi.object({
   });
 
 router.post("/", validator(reqSchema), async (req, res) => {
-
-    console.log("hola")
   
     let user = await User.findOne({ email: req.body.email });
     if (!user) return res.status(400).send("Email y password invalidos");
@@ -56,10 +48,7 @@ router.post('/create', validateBody, async (req, res) => {
 
     user.password = hash;
     await user.save()
-
-    // res.send({username: user.username, email: user.email})
-    // winston.info('Nuevo/a usuario/a en la la base de datos.')
-
+    
     const token = user.generateToken();
     res
       .header("x-auth-token", token)
