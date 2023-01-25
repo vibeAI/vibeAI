@@ -22,7 +22,8 @@ function Navbar() {
                         {
                             auth.isAuth ?
                                 <li><NavLink id='navbar' className="nav-link" to="/profile">My profile</NavLink></li>
-                                : null
+                                :
+                                <li><NavLink id='navbar' className="nav-link" to="/login">Log in</NavLink></li>
                         }
 
                         {
