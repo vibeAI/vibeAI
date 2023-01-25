@@ -3,7 +3,8 @@ import "../styles/styles.css";
 import { setClientToken } from "../spotifyAuth/spotify"
 import { loginEndpoint } from "../spotifyAuth/spotify"
 import "../spotifyAuth/views/login.css"
-import SpotifyArtist from './SpotifyArtist';
+import SpotifyArtist from './SpotifyArtist'
+import FormArtists from './FormArtists'
 
 
 
@@ -29,7 +30,7 @@ const HomeSpoty = () => {
   setTimeout(() => {
     window.localStorage.removeItem("spotyToken");
     window.location.reload(true)
-  }, 1000*60*25);
+  }, 1000 * 60 * 25);
 
 
   return !token ? (
@@ -48,6 +49,8 @@ const HomeSpoty = () => {
     </>
   ) : (
     <>
+      <FormArtists />
+
       <SpotifyArtist />
     </>
   )
