@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from "react-toastify";
 import SpotifyArtist from './SpotifyArtist'
 import "../styles/home.css"
 
@@ -14,6 +15,11 @@ const SignUp = () => {
     const handleForm = async (e) => {
         e.preventDefault()
 
+        if (grupo1 === "" || grupo2 === "") 
+        { toast.warning("Both imputs are required")
+         return
+        }
+        
         console.log(grupo1)
         console.log(grupo2)
 

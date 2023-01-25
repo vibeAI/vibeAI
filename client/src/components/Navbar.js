@@ -16,8 +16,9 @@ function Navbar() {
         <>
             <nav className="nav">
                 <div className="logo">
-                    <NavLink to="/"><img src={logo} className="App-logo" alt="Logo" /></NavLink>
+                    <NavLink to="/"><img src={logo} className="App-logo" alt="Logo" />
                     <img src={text} className="text-logo" alt="VIVE.AI" />
+                    </NavLink>
                 </div>
                     <div id='menuList'>
                         <ul id='navbar' className={clicked ? "#navbar active" : "#navbar"}>

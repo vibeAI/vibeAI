@@ -21,7 +21,7 @@ const LoginForm = () => {
     try {
       await user.login(account);
       console.log(account)
-      toast.info("USER LOGGED")
+      toast.info("Login successful")
       dispatch({ type: "login" });
       navigate(0);
     } catch (err) {
