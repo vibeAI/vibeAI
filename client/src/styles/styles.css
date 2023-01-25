@@ -136,6 +136,7 @@ body {
     border: none;
     letter-spacing: 0.05em;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .landingButton svg {
