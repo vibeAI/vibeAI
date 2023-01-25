@@ -1,19 +1,22 @@
-import LoginForm from "./LoginForm";
-import SignUp from "./SignUp";
+import LoginForm from "./LoginForm"
+import { Link } from "react-router-dom"
 
-
-import "./styles/FormLogin_styles.css"
+import "../styles/styles.css"
+import "../styles/login.css"
 
 const Login = () => {
     return (
         <>
-        <div className="formLogin">
-           
-            <h2>Aceso de Usuarios</h2>
-            <LoginForm />
-        </div>
+            <div className="formLogin">
+                <h1>Log in</h1>
+                <LoginForm />
+
+                <Link to="/signup">
+                    <button className='button'>Sign up</button>
+                </Link>
+            </div>
         </>
-    );  
+    );
 };
 
 export default Login
