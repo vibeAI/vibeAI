@@ -5,7 +5,7 @@ import "../styles/styles.css"
 const AboutUs = () => {
   return (
     <>
-      <h2>AboutUs</h2>
+      <h2 style={{color: 'white'}}>AboutUs</h2>
     </>
   );
 };
