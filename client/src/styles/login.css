@@ -68,10 +68,22 @@ h1 {
 }
 
 .login-form {
-    width: fit-content;
+    width: 50%;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.formRegister {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* #buttonRegister {
@@ -102,13 +114,23 @@ h1 {
     opacity: 0.8;
     letter-spacing: 1px;
     box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
-  }
-  
-  .sendButton:hover {
+}
+
+.sendButton:hover {
     opacity: 1;
-  }
-  
-  .sendButton:active {
+}
+
+.sendButton:active {
     top: 4px;
-    box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
-  }
+    box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
+}
+
+/* select */
+
+
+/* link a registro */
+.registro-link-wrapper {
+    color: white;
+    margin-top: 75px;
+    text-align: center;
+}

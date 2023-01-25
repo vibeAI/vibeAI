@@ -43,8 +43,8 @@ export default function SpotifyArtist() {
 
             <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <Spotify link={`https://open.spotify.com/artist/${uri}?si=4472348a63dd4f83`} />
-                <Spotify link="https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG?si=4472348a63dd4f83" />
-                <Spotify link="https://open.spotify.com/artist/5Y30WvST5ZHhQeemywiT9B?si=4472348a63dd4f83" />
+                <Spotify link={`https://open.spotify.com/artist/${uri}?si=4472348a63dd4f83`} />
+                <Spotify link={`https://open.spotify.com/artist/${uri}?si=4472348a63dd4f83`} />
             </div>
         </>
     )
