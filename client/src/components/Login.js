@@ -11,6 +11,8 @@ const Login = () => {
     const [, dispatch] = AuthConsumer();
     const navigate = useNavigate()
 
+    const [auth] = AuthConsumer()
+
         let account = {
             email : email,
             password: password
@@ -22,11 +24,11 @@ const Login = () => {
         const { isAdmin } = await user.login(account);
 
         dispatch({ type: isAdmin ? "admin" : "login" });
-        navigate("/home")
     }
     
     return (
 
+        auth.isAuth ? navigate('/home') : 
         <>
             <div className='login-wrapper'>
                 <h2 className='login-title'>Log in into your account.</h2>

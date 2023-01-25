@@ -16,15 +16,17 @@ function Navbar() {
                 {<NavLink to="/"><img className="App-logo" alt="Logo" />VibeAI</NavLink>}
                 <div id='menuList'>
                     <ul id='navbar' className={clicked ? "#navbar active" : "#navbar"}>
-
-                        <li><NavLink id='navbar' to="/aboutUs">About Us</NavLink></li>
-
                         {
                             auth.isAuth ?
-                                <li><NavLink id='navbar' className="nav-link" to="/profile">My profile</NavLink></li>
+                                <>
+                                    <li><NavLink id='navbar' className="nav-link" to="/home">Home</NavLink></li>
+                                    <li><NavLink id='navbar' className="nav-link" to="/profile">My profile</NavLink></li>
+                                </>
                                 :
                                 <li><NavLink id='navbar' className="nav-link" to="/login">Log in</NavLink></li>
                         }
+
+                        <li><NavLink id='navbar' to="/aboutUs">About Us</NavLink></li>
 
                         {
                             auth.isAuth ?
