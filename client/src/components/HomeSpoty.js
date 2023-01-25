@@ -26,6 +26,11 @@ const HomeSpoty = () => {
 
   }, []);
 
+  setTimeout(() => {
+    window.localStorage.removeItem("spotyToken");
+    window.location.reload(true)
+  }, 1000*60*25);
+
 
   return !token ? (
     <>
