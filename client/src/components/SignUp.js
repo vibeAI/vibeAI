@@ -31,10 +31,10 @@ const SignUp = () => {
         e.preventDefault()
 
         password === password2 ? 
-            await user.register(account).then(toast.info("Registered")).navigate("/home") 
-            : toast.warning("Passwords must match!")
+            await user.register(account).then(navigate("/home")) : toast.warning("Passwords must match!")
     }
 
+    
     return (
         <>
             <div className='login-wrapper'>
@@ -73,8 +73,8 @@ const SignUp = () => {
 
                     <div className='select-input'>
                     <span>Occupation</span>
-                        <select name="occupation" id="occupation" onChange={(event) => setOccupation(event.currentTarget.value)}>
-                            <option value ="null" disabled selected>Select occupation:</option>
+                        <select name="occupation" defaultValue={"null"} id="occupation" onChange={(event) => setOccupation(event.currentTarget.value)}>
+                            <option value ="null" disabled>Select occupation:</option>
                             <option name ="Employed" value="Employed">Employed</option>
                             <option name ="Self-employed" value="Self-employed">Self-employed</option>
                             <option name ="Unemployed" value="Unemployed">Unemployed</option>
@@ -86,8 +86,8 @@ const SignUp = () => {
 
                     <div className='select-input'>
                     <span>Gender</span>
-                        <select name="gender" id="gender" onChange={(event) => setGender(event.currentTarget.value)}>
-                            <option value ="null" disabled selected>Select Gender:</option>
+                        <select name="gender" defaultValue={"null"} id="gender" onChange={(event) => setGender(event.currentTarget.value)}>
+                            <option value ="null" disabled>Select Gender:</option>
                             <option name ="Male" value="Male">Male</option>
                             <option name ="Female" value="Female">Female</option>
                             <option name ="Non-binary" value="Non-binary">Non-binary</option>
