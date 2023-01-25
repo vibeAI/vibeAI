@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/home",
-        element: <ProtectedRoute isAllowed={"isNotAuth"}><Home /></ProtectedRoute>
+        element: <ProtectedRoute isAllowed={"isAuth"}><Home /></ProtectedRoute>
       },
       {
         path: "/login",
