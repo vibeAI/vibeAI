@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import AuthConsumer from "../hooks/useAuth";
 
-import "../styles/styles.css"
+import "../styles/navbar.css"
 
 function Navbar() {
     const [clicked, setClicked] = useState(false)
