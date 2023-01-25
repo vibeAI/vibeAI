@@ -30,11 +30,11 @@ const SignUp = () => {
 
         e.preventDefault()
 
-        password === password2 ?
-            await user.register(account).then(toast.info("Registered"))
-            : toast.warning("Passwords must match!")
+        password === password2 ? 
+            await user.register(account).then(navigate("/home")) : toast.warning("Passwords must match!")
     }
 
+    
     return (
         <>
             <div className='login-wrapper'>
