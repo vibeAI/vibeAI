@@ -6,6 +6,7 @@ import "../spotifyAuth/views/login.css"
 import SpotifyArtist from './SpotifyArtist';
 
 
+
 const Home = () => {
   const [token, setToken] = useState("");
 
