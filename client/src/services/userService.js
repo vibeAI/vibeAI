@@ -1,9 +1,12 @@
 import jwt_decode from "jwt-decode";
 import http from "./httpService";
 import config from "../config.json";
+import { toast } from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const apiURL = config.apiURL;
 const tokenProperty = "token";
+
 
 async function login(user) {
   const response = await http.post(apiURL + "/login", {
@@ -25,11 +28,14 @@ function logout() {
 }
 
 async function register(user) {
+  
   const response = await http.post(apiURL + "/signup", {
     ...user,
   });
   const token = response.headers["x-auth-token"];
   localStorage.setItem(tokenProperty, token);
+  toast.info("Account created")
+
 
   return token;
 }
