@@ -50,7 +50,6 @@ const HomeSpoty = () => {
     <>
       <FormArtists />
 
-      <SpotifyArtist />
     </>
   )
 
