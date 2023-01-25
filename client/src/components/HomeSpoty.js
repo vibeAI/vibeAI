@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./styles/home_styles.css"
+import "../styles/styles.css";
 import { setClientToken } from "../spotifyAuth/spotify"
 import { loginEndpoint } from "../spotifyAuth/spotify"
 import "../spotifyAuth/views/login.css"
@@ -7,7 +7,7 @@ import SpotifyArtist from './SpotifyArtist';
 
 
 
-const Home = () => {
+const HomeSpoty = () => {
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -49,4 +49,4 @@ const Home = () => {
 
 };
 
-export default Home;
+export default HomeSpoty;
