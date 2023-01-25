@@ -10,19 +10,35 @@ export default function SpotifyArtist() {
     const [artist, setArtist] = useState("");
 
 
+//ESPERANDO A ENDPOINT
+
+    // useEffect(() => {
+    //     fetch("").then((response) => {
+    //         const artist = response.data.name
+    //         setArtist(artist)
+
+    //     });
+
+
+    // }, []);
+
+
     useEffect(() => {
-        apiClient.get(`?q=${artist}&type=artist`).then((response) => {
+        apiClient.get(`?query=${artist}&type=artist&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=20`).then((response) => {
 
             const uri = response.data.artists.items[0].uri.split(":")
             setUri(uri[2])
+            
 
         });
 
 
     }, [artist]);
 
+
+
     function handleArtistChange(e) {
-        setArtist("extremoduro");
+        setArtist("michaeljackson");
 
     }
 
@@ -32,7 +48,6 @@ export default function SpotifyArtist() {
             <div>
                 <button onClick={(e) => {
                     handleArtistChange(e)
-
                 }
                 }>BOTON</button>
             </div>
