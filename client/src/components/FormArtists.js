@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import SpotifyArtist from './SpotifyArtist'
 import "../styles/home.css"
 
+
 const SignUp = () => {
     const [grupo1, setGrupo1] = useState("")
     const [grupo2, setGrupo2] = useState("")
@@ -19,28 +20,28 @@ const SignUp = () => {
         { toast.warning("Both imputs are required")
          return
         }
-        
-        
 
-        fetch(`http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones`, 
-        
-        {method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            "grupo1": grupo1,
-            "grupo2": grupo2,
-        }),
-        })
-        .then((response) => console.log(response.json()))
-        
-        .then((response) => {
-            console.log(response)
-            setRecomendacion1(response.split(",")[0])
-            setRecomendacion2(response.split(",")[1])
-            setRecomendacion3(response.split(",")[2])
-        })
+        const handleState = async (result) => {
+            console.log(result)
+            
+            setRecomendacion1(result.recomendacion1)
+            setRecomendacion2(result.recomendacion2)
+            setRecomendacion3(result.recomendacion3)
+        }
+
+        const { Configuration, OpenAIApi } = require("openai");
+        const configuration = new Configuration({
+          apiKey: "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",
+        });
+        const openai = new OpenAIApi(configuration);
+        const response = await openai.createCompletion({
+          model: "text-davinci-003",
+          prompt: `Replace the word resultado with artists or bands similar to ${grupo1} and ${grupo2}: {"recomendacion1": resultado, "recomendacion2": resultado, "recomendacion3": resultado}`,
+          temperature: 0.1,
+          max_tokens: 300,
+        });
+        let result = await JSON.parse(response.data.choices[0].text)
+        result !== undefined && handleState(result)
     }
     
     return (
@@ -64,6 +65,7 @@ const SignUp = () => {
                     </button>
                 </form>
             </div >
+           
             {recomendacion3 !== "" && <SpotifyArtist artist={recomendacion1}  artist2={recomendacion2} artist3={recomendacion3}/>}
             
 
