@@ -5,6 +5,7 @@
 }
 
 .like {
+    display: hidden;
     --color: #00A97F;
     padding: 0.8em 1.7em;
     background-color: transparent;
@@ -20,6 +21,8 @@
     text-transform: uppercase;
     color: var(--color);
     z-index: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .like::before,
@@ -63,6 +66,7 @@
 /* dislike */
 
 .dislike {
+    display: hidden;
     --color: #a90000;
     padding: 0.8em 1.7em;
     background-color: transparent;
@@ -78,9 +82,12 @@
     text-transform: uppercase;
     color: var(--color);
     z-index: 1;
-   }
-   
-   .dislike::before, .dislike::after {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dislike::before,
+.dislike::after {
     content: '';
     display: block;
     width: 50px;
@@ -91,28 +98,28 @@
     z-index: -1;
     background-color: var(--color);
     transition: 1s ease;
-   }
-   
-   .dislike::before {
+}
+
+.dislike::before {
     top: -1em;
     left: -1em;
-   }
-   
-   .dislike::after {
+}
+
+.dislike::after {
     left: calc(100% + 1em);
     top: calc(100% + 1em);
-   }
-   
-   .dislike:hover::before, .dislike:hover::after {
+}
+
+.dislike:hover::before,
+.dislike:hover::after {
     height: 410px;
     width: 410px;
-   }
-   
-   .dislike:hover {
+}
+
+.dislike:hover {
     color: rgb(10, 25, 30);
-   }
-   
-   .dislike:active {
+}
+
+.dislike:active {
     filter: brightness(.8);
-   }
-   
+}
