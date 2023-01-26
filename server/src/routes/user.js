@@ -1,6 +1,6 @@
 const express = require('express')
 const winston = require('winston')
-const {User , validateBody} = require('../models/user_model')
+const { User, validateBody } = require('../models/user_model')
 const validator = require("../middleware/joiValidator");
 const router = express.Router()
 const Joi = require("joi");
@@ -13,11 +13,11 @@ const reqSchema = Joi.object({
 });
 
 router.put('/edit/:email', validator(reqSchema), async (req, res) => {
-    const user = await User.findOneAndUpdate({id: req.params.email}, req.body)
-    res.send(user)
-    winston.info(`Usuario editado: ${req.params.email}`)
+  console.log(req.params)
+
+  const user = await User.findOneAndUpdate({ email: req.params.email }, req.body)
+  res.send(user)
+  winston.info(`Usuario editado: ${req.params.email}`)
 })
-
-
 
 module.exports = router
