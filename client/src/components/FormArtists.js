@@ -51,7 +51,7 @@ const SignUp = () => {
     return (
         <>
             <div className='login-wrapper'>
-                <h1 className='rec-title'>Try introducing two bands or artists:</h1>
+                <h1 className='rec-title'>Type two bands or artists:</h1>
 
                 <form className='recForm'>
                     <div className='inputArtist'>
