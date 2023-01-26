@@ -1,86 +1,86 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
 
 import "../styles/aboutUs.css"
 
 const AboutUs = () => {
   return (
-    <>
-    <div className='containerCards'>
-      <Card className='cardAboutUs' style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Neiva Jiménez</Card.Title>
-          <Button variant="primary">Linkedin</Button>
-        </Card.Body>
-      </Card>
+    
+     <div className='containerCards'>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Antonio Ambros'></img>
+        </div>
+        <span> Antonio Ambros</span>
+        <button>Linkedin</button>
+      </div>
 
-      <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Rafa Cabezas</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Dani Valero'></img>
+        </div>
+        <span> Dani Valero</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Dani Valero</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Génesis Rojas'></img>
+        </div>
+        <span> Génesis Rojas </span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title> Ruben Ganga</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Guillermo Martín'></img>
+        </div>
+        <span> Guillermo Martín</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Marcelo </Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Marcelo Velasco'></img>
+        </div>
+        <span> Marcelo Velasco</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Génesis</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='María de los Ángeles Naranjo'></img>
+        </div>
+        <span> María de los Ángeles Naranjo</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Alberto</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+   
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Neiva Jiménez'></img>
+        </div>
+        <span> Neiva Jiménez</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Ma</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt=' Rafa Cabezas'></img>
+        </div>
+        <span> Rafa Cabezas</span>
+        <button>Linkedin</button>
+      </div>
 
-    <Card className='cardAboutUs' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>sss</Card.Title>
-        <Button variant="primary">Linkedin</Button>
-      </Card.Body>
-    </Card>
+      <div className="card">
+        <div className="img">
+          <img src='' alt='Rubén Ruiz'></img>
+        </div>
+        <span> Rubén Ruiz</span>
+        <button>Linkedin</button>
+      </div>
+  
     </div>
-    </>
   );
 };
 
