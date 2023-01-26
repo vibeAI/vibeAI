@@ -20,31 +20,34 @@ const SignUp = () => {
          return
         }
         
-        console.log(grupo1)
-        console.log(grupo2)
+        // console.log(grupo1)
+        // console.log(grupo2)
 
-        fetch(`http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendacion`, 
+        // fetch(`http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendacion`, 
         
-        {method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            grupo1: grupo1,
-            grupo2: grupo2,
-            similaridad: range
-        }),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            setRecomendacion1(data.result1)
-            setRecomendacion2(data.result2)
-            setRecomendacion3(data.result3)
-        })
+        // {method: 'POST',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify({
+        //     grupo1: grupo1,
+        //     grupo2: grupo2,
+        //     similaridad: range
+        // }),
+        // })
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     setRecomendacion1(data.result1)
+        //     setRecomendacion2(data.result2)
+        //     setRecomendacion3(data.result3)
+        // })
        
-
+         setRecomendacion1("shakira")
+         setRecomendacion2("Beyoncé")
+         setRecomendacion3("Rihanna")
+        
     }
-
+    
     return (
         <>
             <div className='login-wrapper'>
@@ -66,8 +69,7 @@ const SignUp = () => {
                     </button>
                 </form>
             </div >
-
-            {recomendacion3 && <SpotifyArtist artist={recomendacion1}  atist2={recomendacion2} artist3={recomendacion3}/>}
+            {recomendacion3 !== "" && <SpotifyArtist artist={recomendacion1}  artist2={recomendacion2} artist3={recomendacion3}/>}
         </>
     );
 }
