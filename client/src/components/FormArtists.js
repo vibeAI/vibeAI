@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { toast } from "react-toastify";
 import SpotifyArtist from './SpotifyArtist'
 import "../styles/home.css"
+import "../assets/wrong.svg"
+import "../assets/check.svg"
+import user from "../services/userService"
 
 
 const SignUp = () => {
     const [grupo1, setGrupo1] = useState("")
     const [grupo2, setGrupo2] = useState("")
-    const [range, setRange] = useState("")
 
     const [recomendacion1, setRecomendacion1] = useState("")
     const [recomendacion2, setRecomendacion2] = useState("")
@@ -43,6 +45,56 @@ const SignUp = () => {
         result !== undefined && handleState(result)
     }
 
+    const handleRecommendation = async (e) => {
+        console.log(recomendacion1)
+
+        fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`,
+
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    grupo1: grupo1,
+                    grupo2: grupo2,
+                    "recomendacion1": recomendacion1,
+                    "recomendacion2": recomendacion2,
+                    "recomendacion3": recomendacion3,
+                    "opinion": e.currentTarget.value
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
+
+
+        fetch(`http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/bbdd`,
+
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    _id: user.currentUser()._id
+
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
+
+    }
+
     return (
         <>
             <div className='login-wrapper'>
@@ -55,10 +107,10 @@ const SignUp = () => {
                         <input type="text" name="text" className="input" placeholder="Artist/Band 2" onChange={(e) => setGrupo2(e.currentTarget.value)}></input>
                     </div>
 
-                    <div style={{ display: "flex", justifyContent: "space-around" }}>
-                        <label style={{ color: "white", lineHeight: "fit-content" }}>Similarity</label>
+                    {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
+                        <label style={{ color: "white", lineHeight: "fit-content"}}>Similarity</label>
                         <input type="range" id="points" name="points" min="50" max="100" style={{ width: "150px" }} onChange={(e) => setRange(e.currentTarget.value)}></input>
-                    </div>
+                    </div> */}
                     <button className='mixupButton' onClick={(e) => handleForm(e)}>
                         <span className="TxtEffect">Mix up</span>
                     </button>
@@ -67,6 +119,15 @@ const SignUp = () => {
 
             {recomendacion3 !== "" && <SpotifyArtist artist={recomendacion1} artist2={recomendacion2} artist3={recomendacion3} />}
 
+            {<div className="likeordislike">
+                <button className="like" onClick={(e) => handleRecommendation(e)} value="true">
+
+                    <svg height="24" width="24" xmlns={"../assets/check.svg"} viewBox="0 0 512 512"><path d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" /></svg>
+                </button>
+                <button className="dislike" onClick={(e) => handleRecommendation(e)} value="false">
+                    <svg height="24" width="24" xmlns={"../assets/wrong.svg"} viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z" /></svg>
+                </button>
+            </div>}
 
         </>
     );
