@@ -20,4 +20,12 @@ router.put('/edit/:email', validator(reqSchema), async (req, res) => {
   winston.info(`Usuario editado: ${req.params.email}`)
 })
 
+router.put('/add-recommendation/:email', async (req, res) => {
+  console.log(req.body)
+
+  const user = await User.findOneAndUpdate({email: req.params.email}, {$push: {data: req.body}})
+  res.send(user)
+  winston.info(`Recomendacion añadida: ${req.params.email}`)
+})
+
 module.exports = router

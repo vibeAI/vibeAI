@@ -3,7 +3,6 @@ import "../styles/styles.css";
 import { setClientToken } from "../spotifyAuth/spotify"
 import { loginEndpoint } from "../spotifyAuth/spotify"
 import "../spotifyAuth/views/login.css"
-import SpotifyArtist from './SpotifyArtist'
 import FormArtists from './FormArtists'
 
 
