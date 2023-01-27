@@ -13,14 +13,13 @@ export default function SpotifyArtist(props) {
     const [uri, setUri] = useState("");
     const [uri2, setUri2] = useState("");
     const [uri3, setUri3] = useState("");
-    console.log(props)
+    
 
 
     useEffect(() => {
         const getData = async () => {
             
             await apiClient.get(`/search?query=${props.artist}&type=artist&locale=es-ES%2Ces%3Bq%3D0.9&offset=0&limit=20`).then((response) => {
-                console.log(response)
                 const uri = response.data.artists.items[0].uri.split(":")
                 setUri(uri[2])
             });
