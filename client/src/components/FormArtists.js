@@ -33,7 +33,7 @@ const SignUp = () => {
 
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
-          apiKey: "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",
+          apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
@@ -47,7 +47,6 @@ const SignUp = () => {
     }
 
     const handleRecommendation = async (e) => {
-        console.log(recomendacion1)
 
         fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`, 
         
@@ -80,18 +79,21 @@ const SignUp = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            _id:  user.currentUser()._id
-
+            _id:  user.getCurrentUser()._id,
+            username: user.getCurrentUser().username,
+            email: user.getCurrentUser().email,
+            sexo: user.getCurrentUser().gender,
+            ocupacion: user.getCurrentUser().occupation,
+            data: user.getCurrentUser().data[user.getCurrentUser().data.length]
         }),
         })
         .then((response) => response.json())
-        .then((data) => {
+        .then((data) => {   
             console.log('Success:', data);
         })
         .catch((error) => {
             console.error('Error:', error);
         })
-
     }
     
     return (
@@ -106,10 +108,6 @@ const SignUp = () => {
                         <input type="text" name="text" className="input" placeholder="Artist/Band 2" onChange={(e) => setGrupo2(e.currentTarget.value)}></input>
                     </div>
 
-                    {/* <div style={{ display: "flex", justifyContent: "space-around" }}>
-                        <label style={{ color: "white", lineHeight: "fit-content"}}>Similarity</label>
-                        <input type="range" id="points" name="points" min="50" max="100" style={{ width: "150px" }} onChange={(e) => setRange(e.currentTarget.value)}></input>
-                    </div> */}
                     <button className='mixupButton' onClick={(e) => handleForm(e)}>
                         <span className="TxtEffect">Mix up</span>
                     </button>
