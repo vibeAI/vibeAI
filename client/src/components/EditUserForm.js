@@ -24,19 +24,24 @@ const EditUserForm = () => {
             <h1 className='tituloSaludo'>Hello {username.username}</h1>
             <div>
                 <h1 className='tituloRecomendaciones'>Recent recommendations:</h1>
-                    <div style={{color:"white"}}>
+                <div className='ContainerProfile'>
+                    
                         {users.reverse().map((e)=>(
-                            <>
-                                <h4>grupo1:{e.grupo1}</h4>
-                                <h4>grupo2:{e.grupo2}</h4>
-                                <h4>recomendacion1:{e.recomendacion1}</h4>
-                                <h4>recomendacion2:{e.recomendacion2}</h4>
-                                <h4>recomendacion3:{e.recomendacion3}</h4>
-                            </>
+                            <div className='cardProfile'>
+                                <h3>Grupos</h3>
+                                <h4>1: {e.grupo1}</h4>
+                                <h4>2: {e.grupo2}</h4>
+                                <h3>Recomendaciones:</h3>
+                                <h4> 1: {e.recomendacion1}</h4>
+                                <h4> 2: {e.recomendacion2}</h4>
+                                <h4> 3: {e.recomendacion3}</h4>
+                            </div>
                         ))}
-                    </div>
+                </div>
+                 
             </div>
-
+            <div className='login-wrapper'>
+            <h1 className='login-title'>change Password</h1>
             <form className='inputbox loginForm'>
                 <div className="inputbox">
                     <input autoComplete='true' type="text" id="username" name="username" onChange={(e) => setNewUsername(e.currentTarget.value)} />
@@ -66,6 +71,9 @@ const EditUserForm = () => {
                     Edit user
                 </button>
             </form>
+            
+            </div>
+
         </>
     );
 };
