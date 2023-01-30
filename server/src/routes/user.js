@@ -13,6 +13,7 @@ const reqSchema = Joi.object({
 });
 
 router.put('/edit/:email', validator(reqSchema), async (req, res) => {
+  console.log("Hola")
   console.log(req.params)
 
   const user = await User.findOneAndUpdate({ email: req.params.email }, req.body)
