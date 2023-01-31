@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import user from "../services/userService"
+import axios from 'axios'
 
 import "../styles/profile.css"
 
