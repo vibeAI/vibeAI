@@ -8,7 +8,6 @@ import "../assets/wrong.svg"
 
 export default function SpotifyArtist(props) {
 
-
     const [uri, setUri] = useState("");
     const [uri2, setUri2] = useState("");
     const [uri3, setUri3] = useState("");
