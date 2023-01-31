@@ -6,13 +6,16 @@ const mongoose = require('mongoose');
 const Joi = require('joi')
 const validator = require("../middleware/joiValidator");
 const _ = require("lodash");
+const { string } = require("joi");
 
 const dataSchema = new mongoose.Schema({
     user_id: String,
     grupo1: String,
     grupo2: String,
-    temp: Number,
-    response: Object
+    recomendacion1: String,
+    recomendacion2: String,
+    recomendacion3: String,
+    opinion: Boolean
 });
 
 const userSchema = new mongoose.Schema({
@@ -47,7 +50,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateToken = function () {
     return jwt.sign(
-      _.pick(this, ["_id", "email"]),
+      _.pick(this, ["_id", "email", "username", "gender", "occupation", "age", "password", "data"]),
       config.get("jwtPrivateKey")
     );
   };
