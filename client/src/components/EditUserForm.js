@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import user from "../services/userService"
+import axios from 'axios'
 
 import "../styles/profile.css"
 
@@ -49,12 +50,12 @@ const EditUserForm = () => {
         <>
             <h1 className='tituloSaludo'>Hello {username.username}</h1>
             <div>
-                <h1 className='tituloRecomendaciones'>Here are your recent recommendations:</h1>
+                <h2 className='tituloRecomendaciones'>Here are your recent recommendations:</h2>
                 <div className='ContainerProfile'>
                     
                         {users.reverse().map((e)=>(
                             <div className='cardProfile'>
-                                <h3>Artist/Bands</h3>
+                                <h3 className='artist'>Artist/Bands</h3>
                                 <h4>1: {e.grupo1}</h4>
                                 <h4>2: {e.grupo2}</h4>
                                 <h3>Recommendations:</h3>
@@ -93,7 +94,7 @@ const EditUserForm = () => {
                     <i></i>
                 </div>
 
-                <button type="submit" onClick={(e) => handleForm(e)}>
+                <button className='buttonEdit' type="submit" onClick={(e) => handleForm(e)}>
                     Edit user
                 </button>
             </form>
