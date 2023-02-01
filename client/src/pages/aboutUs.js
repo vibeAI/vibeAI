@@ -5,6 +5,7 @@ import guillermo from '../assets/Data/Guillermo.png'
 import dani from '../assets/FullStack/Dani.jpg'
 import antonio from '../assets/Data/Antonio.png'
 import ruben from '../assets/FullStack/Ruben.jpg'
+import mariaAngeles from '../assets/Data/MariaAngeles.jpg'
 import "../styles/aboutUs.css"
 
 const AboutUs = () => {
@@ -89,7 +90,7 @@ const AboutUs = () => {
 
        <div className="card">
          <div className="img">
-           <img src={marcelo}  alt='María de los Ángeles Naranjo'></img>
+           <img src={mariaAngeles}  alt='María de los Ángeles Naranjo'></img>
          </div>
          <span> María de los Ángeles Naranjo</span>
          <a href='https://www.linkedin.com/in/mar%C3%ADa-de-los-%C3%A1ngeles-naranjo-mu%C3%B1oz-484535188/' target="_blank"> <button  >Linkedin</button></a>
