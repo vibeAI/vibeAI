@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import user from "../services/userService"
+import axios from 'axios'
 
 import "../styles/profile.css"
 
@@ -18,8 +19,10 @@ const EditUserForm = () => {
        newPassword === "" && toast.warning("Password is required")
        newPassword !== newPassword2 && toast.warning("Passwords must match!")
         
-       newUsername === "" && setNewUsername(username.username)
-       newEmail === "" && setNewEmail(username.email)
+       newUsername === "" && setNewUsername(user.getCurrentUser().username)
+       newEmail === "" && setNewEmail(user.getCurrentUser().email)
+
+       console.log(newPassword)
 
        fetch(`http://www.localhost:3000/user/edit/${user.getCurrentUser().email}`, 
         
@@ -29,8 +32,7 @@ const EditUserForm = () => {
         },
         body: JSON.stringify({
             username: newUsername,
-            email: newEmail,
-            password: newPassword
+            email: newEmail
         }),
         })
         .then((response) => response.json())
