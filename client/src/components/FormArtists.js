@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { toast } from "react-toastify";
+import { toast } from "react-toastify"
 import SpotifyArtist from './SpotifyArtist'
 import "../styles/home.css"
 import "../assets/wrong.svg"
@@ -32,11 +32,7 @@ const SignUp = () => {
 
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
-        
-            apiKey: "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",
-
-        ,
-
+            apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
