@@ -57,12 +57,12 @@ nav {
 }
 
 #navbar li a:hover {
-    background-color: #681E86;
+    background-color:var(--color3);
     color: white;
 }
 
 #navbar li a.active {
-    background-color: var(--main-bg-color);
+    background-color: var(--color2);
     color: white;
 }
 

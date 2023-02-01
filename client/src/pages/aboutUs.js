@@ -3,6 +3,8 @@ import marcelo from '../assets/FullStack/Marcelo.png'
 import genesis from '../assets/Data/Genesis.png'
 import guillermo from '../assets/Data/Guillermo.png'
 import dani from '../assets/FullStack/Dani.jpg'
+import antonio from '../assets/Data/Antonio.png'
+import ruben from '../assets/FullStack/Ruben.jpg'
 import "../styles/aboutUs.css"
 
 const AboutUs = () => {
@@ -49,10 +51,10 @@ const AboutUs = () => {
 
       <div  className="card">
         <div className="img">
-          <img src={marcelo}  alt='Rubén Ruiz'></img>
+          <img src={ruben}  alt='Rubén Ruiz'></img>
         </div>
         <span> Rubén Ruiz</span>
-        <a href='' target="_blank"> <button  >Linkedin</button></a>
+        <a href='https://www.linkedin.com/in/rub%C3%A9n-r-ganga-5559a0259/' target="_blank"> <button  >Linkedin</button></a>
       </div>
 
     </div>
@@ -62,10 +64,10 @@ const AboutUs = () => {
     <div  className='containerCards'>
        <div className="card">
          <div className="img">
-           <img src={marcelo}  alt='Antonio Ambros'></img>
+           <img src={antonio}  alt='Antonio Ambros'></img>
          </div>
          <span> Antonio Ambrosio</span>
-         <a href='' target="_blank"> <button  >Linkedin</button></a>
+         <a href='https://www.linkedin.com/in/aacommunication/' target="_blank"> <button  >Linkedin</button></a>
        </div>
 
        <div className="card">

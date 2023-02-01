@@ -53,7 +53,7 @@ const EditUserForm = () => {
                     
                         {users.reverse().map((e)=>(
                             <div className='cardProfile'>
-                                <h3>Artist/Bands</h3>
+                                <h3 className='artist'>Artist/Bands</h3>
                                 <h4>1: {e.grupo1}</h4>
                                 <h4>2: {e.grupo2}</h4>
                                 <h3>Recommendations:</h3>
