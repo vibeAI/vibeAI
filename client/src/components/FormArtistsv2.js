@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { toast } from "react-toastify";
-import SpotifyArtist from './SpotifyArtist'
+import Spotify from "react-spotify-embed";
 import "../styles/home.css"
 import "../assets/wrong.svg"
 import "../assets/check.svg"
@@ -15,39 +14,36 @@ const SignUp = () => {
     const [musicGenre, setMusicGenre] = useState("")
     const [hobbie, setHobbie] = useState("")
     const [language, setLanguage] = useState("")
-    const[opcion1, setOpcion1] = useState("")
-    const[opcion2, setOpcion2] = useState("")
-    const[opcion3, setOpcion3] = useState("")
+    const[opcion1, setOpcion1] = useState("false")
+    const[opcion2, setOpcion2] = useState("false")
+    const[opcion3, setOpcion3] = useState("false")
 
     const [recomendacion1, setRecomendacion1] = useState("")
     const [recomendacion2, setRecomendacion2] = useState("")
     const [recomendacion3, setRecomendacion3] = useState("")
-
-    const newRequest = {
-        text: text,
-        gender: gender,
-        ages: ages,
-        music: musicGenre,
-        hobbie: hobbie,
-        language: language,
-    }
+    const [uri1, setUri1] = useState("")
+    const [uri2, setUri2] = useState("")
+    const [uri3, setUri3] = useState("")
 
     const logData = {
         recomendacion1: recomendacion1,
         recomendacion2: recomendacion2,
         recomendacion3: recomendacion3,
         opcion1: opcion1,
-        opcion2:  opcion2,
-        opcion3: opcion3,
+        opcion2: opcion2,
+        opcion3: opcion3
+    }
+
+    const handleOption = (e) => {
+        
+
 
     }
 
     const handleForm = async (e) => {
         e.preventDefault()
 
-        let resultado = []
-
-        let busqueda = axios.post('http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones', {
+        axios.post('http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones', {
             text: text,
             gender: gender,
             ages: ages,
@@ -56,43 +52,33 @@ const SignUp = () => {
             language: language,
         })
         .then(function (response) {
-        console.log(response.data);
-        resultado = response.data
+        setRecomendacion1(response.data.data[0].recomendacion1)
+        setRecomendacion2(response.data.data[1].recomendacion2)
+        setRecomendacion3(response.data.data[2].recomendacion3)
+
+        setUri1(response.data.data[0].uri)
+        setUri2(response.data.data[1].uri)
+        setUri3(response.data.data[2].uri)
         })
         .catch(function (error) {
         console.log(error);
         });
-
-        busqueda && console.log(resultado)
-
-
-        // const handleState = async (result) => {
-
-        // setRecomendacion1(response.data[0])
-        // setRecomendacion2(response.data[1])
-        // setRecomendacion3(response.data[2])
-        // }
     }
 
+
     const handleRecommendation = async (e) => {
+        console.log(logData)
 
-        fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`,
+        // fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`,
 
-            fetch(`http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/bbdd`,
-
+            await axios.post(`#`,
                 {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        _id: user.getCurrentUser()._id,
-                        username: user.getCurrentUser().username,
-                        email: user.getCurrentUser().email,
-                        sexo: user.getCurrentUser().gender,
-                        ocupacion: user.getCurrentUser().occupation,
-                        data: logData
-                    }),
+                    _id: user.getCurrentUser()._id,
+                    username: user.getCurrentUser().username,
+                    email: user.getCurrentUser().email,
+                    sexo: user.getCurrentUser().gender,
+                    ocupacion: user.getCurrentUser().occupation,
+                    data: logData
                 })
                 .then((response) => response.json())
                 .then((data) => {
@@ -100,8 +86,8 @@ const SignUp = () => {
                 })
                 .catch((error) => {
                     console.error('Error:', error);
-                }))
-        window.location.reload()
+                })
+        // window.location.reload()
     }
 
     return (
@@ -112,11 +98,83 @@ const SignUp = () => {
                 <form className='recForm'>
                     <div className='inputArtist'>
                         <label>Text:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setText(e.currentTarget.value)}></input>
-                        <label>Gender:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setGender(e.currentTarget.value)}></input>
-                        <label>Age:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setAges(e.currentTarget.value)}></input>
-                        <label>Music Genre:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setMusicGenre(e.currentTarget.value)}></input>
-                        <label>Hobbie:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setHobbie(e.currentTarget.value)}></input>
-                        <label>Language:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setLanguage(e.currentTarget.value)}></input>
+                        <div className='select-input'>
+                                <span>Gender:</span>
+                                <select name="occupation" id="occupation" onChange={(event) => setGender(event.currentTarget.value)}>
+                                    <option value="null" selected disabled>Select gender:</option>
+                                    <option name="Male" value="Male">Male</option>
+                                    <option name="Female" value="Female">Female</option>
+                                    <option name="Male and Female" value="Male and Female">Male and Female</option>
+                                </select>
+                            </div>
+                        <div className='select-input'>
+                                <span>Age:</span>
+                                <select name="occupation" id="occupation" onChange={(event) => setAges(event.currentTarget.value)}>
+                                    <option value="null" selected disabled>Select age:</option>
+                                    <option name="12" value="12-16">12-16</option>
+                                    <option name="16-25" value="16-25">16-25</option>
+                                    <option name="25-35" value="25-35">25-35</option>
+                                    <option name="35-45" value="35-45">35-45</option>
+                                    <option name=">45" value=">45">45+</option>
+                                </select>
+                            </div>
+                        <div className='select-input'>
+                                <span>Music Genre:</span>
+                                <select name="occupation" id="occupation" onChange={(event) => setMusicGenre(event.currentTarget.value)}>
+                                    <option value="null" selected disabled>Select music genre:</option>
+                                    <option name="Pop" value="Pop">Pop</option>
+                                    <option name="Rock or Metal or Punk" value="Rock or Metal or Punk">Rock or Metal or Punk</option>
+                                    <option name="Hip hop or Rap or R&B or Trap" value="Hip hop or Rap or R&B or Trap">Hip hop or Rap or R&B or Trap</option>
+                                    <option name="Electronic or Techno or Trance" value="Electronic or Techno or Trance">Electronic or Techno or Trance</option>
+                                    <option name="Reggaeton" value="Reggaeton">Reggaeton</option>
+                                    <option name="Salsa or Merengue or Bachata" value="Salsa or Merengue or Bachata">Salsa or Merengue or Bachata</option>
+                                    <option name="Reggae" value="Reggae">Reggae</option>
+                                    <option name="Indie" value="Indie">Indie</option>
+                                    <option name="Flamenco" value="Flamenco">Flamenco</option>
+                                </select>
+                            </div>
+                        <div className='select-input'>
+                                <span>Hobbie:</span>
+                                <select name="occupation" id="occupation" onChange={(event) => setHobbie(event.currentTarget.value)}>
+                                    <option value="null" selected disabled>Select a hobbie:</option>
+                                    <option name="Taking photos and editing them" value="Taking photos and editing them">Taking photos and editing them</option>
+                                    <option name="Travelling" value="Travelling">Travelling</option>
+                                    <option name="Exercise and body care" value="Exercise and body care">Exercise and body care</option>
+                                    <option name="Food and cooking" value="Food and cooking">Food and cooking</option>
+                                    <option name="Fashion and beauty" value="Fashion and beauty">Fashion and beauty</option>
+                                    <option name="Animals and pets" value="Animals and pets">Animals and pets</option>
+                                    <option name="Music and dancing" value="Music and dancing">Music and dancing</option>
+                                    <option name="Sports and outdoor activities" value="Sports and outdoor activities">Sports and outdoor activities</option>
+                                    <option name="Art and design" value="Art and design">Art and design</option>
+                                    <option name="Technology and compute science" value="Technology and compute science">Technology and compute science</option>
+                                    <option name="Movies and TV shows" value="Movies and TV shows">Movies and TV shows</option>
+                                    <option name="Video games" value="Video games">Video games</option>
+                                    <option name="Reading and writing" value="Reading and writing">Reading and writing</option>
+                                    <option name="Psychology and self-help" value="Psychology and self-help">Psychology and self-help</option>
+                                    <option name="Science and nature" value="Science and nature">Science and nature</option>
+                                    <option name="Photography and cinema" value="Photography and cinema">Photography and cinema</option>
+                                    <option name="Business and finance" value="Business and finance">Business and finance</option>
+                                    <option name="Culture and history" value="Culture and history">Culture and history</option>
+                                    <option name="Social sciences and politics" value="Social sciences and politics">Social sciences and politics</option>
+                                    <option name="Education and learning" value="Education and learning">Education and learning</option>
+                                </select>
+                            </div>
+                        <div className='select-input'>
+                                <span>Language:</span>
+                                <select name="occupation" id="occupation" onChange={(event) => setLanguage(event.currentTarget.value)}>
+                                    <option value="null" selected disabled>Select language:</option>
+                                    <option name="English" value="English">English</option>
+                                    <option name="Spanish" value="Spanish">Spanish</option>
+                                    <option name="French" value="French">French</option>
+                                    <option name="Italian" value="Italian">Italian</option>
+                                    <option name="Portuguese" value="Portuguese">Portuguese</option>
+                                    <option name="Chinese" value="Chinese">Chinese</option>
+                                    <option name="German" value="German">German</option>
+                                    <option name="Russian" value="Russian">Russian</option>
+                                    <option name="Japanese" value="Japanese">Japanese</option>
+                                    <option name="Arab" value="Arab">Arab</option>
+                                </select>
+                            </div>
 
                     </div>
 
@@ -126,11 +184,21 @@ const SignUp = () => {
                 </form>
             </div >
 
-            {recomendacion3 !== "" && <SpotifyArtist artist={recomendacion1} artist2={recomendacion2} artist3={recomendacion3} />}
+            {uri3 !== "" && 
+            
+            <>
+            <h3>Here are your recommendations!</h3>
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <h4>{recomendacion1}</h4> <h4>{recomendacion2}</h4> <h4>{recomendacion3}</h4>
+            <Spotify link={`https://open.spotify.com/artist/${uri1}?si=4472348a63dd4f83`} />
+            <Spotify link={`https://open.spotify.com/artist/${uri2}?si=4472348a63dd4f83`} />
+            <Spotify link={`https://open.spotify.com/artist/${uri3}?si=4472348a63dd4f83`} />
+            </div>
+            </>}
 
             <fieldset>
-                <legend>Please select your preferred contact method:</legend>
-                <div>
+                <legend>Choose your favorite recommendation:</legend>
+                <div onChange={(e) => {handleOption(e.currentTarget.value)}}>
                 <input type="radio" id="opcion1" name="contact" value="opcion1" />
                 <label>1</label>
 
@@ -142,7 +210,7 @@ const SignUp = () => {
                 </div>
 
                 <div>
-                <button type="submit">Submit</button>
+                <button onClick={(e) => {handleRecommendation(e)}}>Save recommendation</button>
                 </div>
             </fieldset>
 
