@@ -84,34 +84,34 @@ const SignUp = () => {
             })
 
         await axios.post(`http://dbmusic.cb2wgp0ktb7z.us-east-1.rds.amazonaws.com/`,
-            {
-                _id: user.getCurrentUser()._id,
-                username: user.getCurrentUser().username,
-                email: user.getCurrentUser().email,
-                sexo: user.getCurrentUser().gender,
-                ocupacion: user.getCurrentUser().occupation,
-                text: text,
-                gender: gender,
-                ages: ages,
-                music: musicGenre,
-                hobbie: hobbie,
-                language: language,
+        {
+            _id: user.getCurrentUser()._id,
+            username: user.getCurrentUser().username,
+            email: user.getCurrentUser().email,
+            sexo: user.getCurrentUser().gender,
+            ocupacion: user.getCurrentUser().occupation,
+            text: text,
+            gender: gender,
+            ages: ages,
+            music: musicGenre,
+            hobbie: hobbie,
+            language: language,
+            data: {
                 recomendacion1: recomendacion1,
                 recomendacion2: recomendacion2,
                 recomendacion3: recomendacion3,
                 opcion1: opcion1,
                 opcion2: opcion2,
                 opcion3: opcion3
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            })
-
-
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
     }
 
     return (

@@ -23,8 +23,6 @@ const EditUserForm = () => {
         newUsername === "" && setNewUsername(user.getCurrentUser().username)
         newEmail === "" && setNewEmail(user.getCurrentUser().email)
 
-        console.log(newPassword)
-
         fetch(`http://www.localhost:3000/user/edit/${user.getCurrentUser().email}`,
             {
                 method: 'PUT',
@@ -44,13 +42,13 @@ const EditUserForm = () => {
                 console.error('Error:', error);
             })
     }
-console.log(username.data)
+
     return (
         <>
             <div>
 
-            { (!username.data.length) 
-             ? <h1 className='tituloSaludo'>Hey, {username.username}, No recent recommendations..</h1>
+            { (!username.data.length && !username.data2.length) 
+             ? <h1 className='tituloSaludo'>Hey, {username.username}, No recent recommendations...</h1>
              : <h1 className='tituloSaludo'>Hey, {username.username}, these are your recent recommendations:</h1>                         
             }
                 <div className='ContainerProfile'>
