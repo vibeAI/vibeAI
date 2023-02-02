@@ -35,15 +35,17 @@ const SignUp = () => {
     }
 
     const handleOption = (e) => {
+        console.log(logData)
+        console.log(e)
         
-
-
+        e === "opcion1"? setOpcion1("true") && setOpcion2("false") && setOpcion3("false") : setOpcion1("false")
+        e === "opcion2"? setOpcion2("true") && setOpcion1("false") && setOpcion3("false") : setOpcion2("false")
+        e === "opcion3"? setOpcion3("true") && setOpcion1("false") && setOpcion2("false") : setOpcion3("false")
     }
 
     const handleForm = async (e) => {
         e.preventDefault()
-
-        axios.post('http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones', {
+        await axios.post('http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones', {
             text: text,
             gender: gender,
             ages: ages,
@@ -68,7 +70,7 @@ const SignUp = () => {
 
     const handleRecommendation = async (e) => {
         console.log(logData)
-
+        e.preventDefault()
         // fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`,
 
             await axios.post(`#`,
@@ -194,26 +196,26 @@ const SignUp = () => {
             <Spotify link={`https://open.spotify.com/artist/${uri2}?si=4472348a63dd4f83`} />
             <Spotify link={`https://open.spotify.com/artist/${uri3}?si=4472348a63dd4f83`} />
             </div>
-            </>}
+            
 
-            <fieldset>
+            <form>
                 <legend>Choose your favorite recommendation:</legend>
-                <div onChange={(e) => {handleOption(e.currentTarget.value)}}>
-                <input type="radio" id="opcion1" name="contact" value="opcion1" />
+                <div>
+                <input type="radio" id="opcion1" name="opcion" value="opcion1" onClick={(e) => {handleOption(e.currentTarget.value)}}/>
                 <label>1</label>
 
-                <input type="radio" id="contactChoice2" name="contact" value="opcion2" />
+                <input type="radio" id="opcion2" name="opcion" value="opcion2" onClick={(e) => {handleOption(e.currentTarget.value)}}/>
                 <label>2</label>
 
-                <input type="radio" id="contactChoice3" name="contact" value="opcion3" />
+                <input type="radio" id="opcion3" name="opcion" value="opcion3" onClick={(e) => {handleOption(e.currentTarget.value)}}/>
                 <label>3</label>
                 </div>
 
                 <div>
                 <button onClick={(e) => {handleRecommendation(e)}}>Save recommendation</button>
                 </div>
-            </fieldset>
-
+            </form>
+            </>}
         </>
     );
 }
