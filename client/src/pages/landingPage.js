@@ -17,8 +17,11 @@ const LandingPage = () => {
                         <h1 className='title'>The final Music Recommendation System</h1>
                         <br></br>
                         <p className='text'>
-                            Ready to find what you were looking for?<br></br>
-                            Insert two of your favorite groups or artists that you like the most, we'll take care of the rest.
+                            Ready to find what you were looking for?<br></br><br></br>
+                            With VibeAI you will find those music groups that you once listened to but didn't know
+                            what they were called. Those songs that remind you of those bands you like so much.<br></br><br></br>
+                            We are ready to blow your mind.
+                            And you, are you ready?
                         </p>
 
                         {isAuth ?
@@ -67,6 +70,28 @@ const LandingPage = () => {
                             <h4>Step 3</h4>
                             <p>Insert the name of two artists or bands</p>
                         </div>
+                    </div>
+
+                    <div className='textLanding'>
+                        <p>
+                            We along with our AI powered search engine are going to help you. We bring the power of the model 
+                            behind <b>ChatGPT</b> for you to enjoy music like never before.
+                        </p>
+                        <p>
+                            It's easy. Insert two of your favorite bands, artists or songs, we'll take care of the rest,
+                            it's that simple! You will receive three <b>Spotify</b> recommendations of bands or artists that for sure will
+                            surprise you.
+                        </p>
+                        <p>
+                            VibeAI is an artificial intelligence platform that helps users quickly find the music, band
+                            or artist they are looking for. You will receive a high quality response quickly, so fast
+                            and  so  accurate  that  you won't believe  it.  Thanks  to  <b>AI  technology</b> powered  by
+                            ChatGPT you will stop wasting time chasing that song, artist or band you want to find
+                            now.<br></br>Start finding and stop searching. That job, VibeAI will do.
+                        </p>
+                        <p>
+                            It seems like magic, yes, but it's <b>VibeAI</b>.
+                        </p>
                     </div>
                 </div>
             </div>
