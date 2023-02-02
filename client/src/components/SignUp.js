@@ -29,9 +29,8 @@ const SignUp = () => {
     const handleForm = async (e) => {
 
         e.preventDefault()
-        console.log(account)
-
-        password === password2 ? await user.register(account).then(navigate("/home")) : toast.warning("Passwords must match!")
+        if(username && email && password && password2 && age && occupation && gender !== "") {password === password2 ? await user.register(account).then(navigate("/login")) : toast.warning("Passwords must match!")} 
+        else { toast.warning("Some information is missing")}
     }
 
     

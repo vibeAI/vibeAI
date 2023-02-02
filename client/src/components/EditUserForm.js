@@ -11,6 +11,7 @@ const EditUserForm = () => {
     const [newPassword, setNewPassword] = useState("")
     const [newPassword2, setNewPassword2] = useState("")
     const users = user.getCurrentUser().data
+    const users2 = user.getCurrentUser().data2
     const username = user.getCurrentUser()
 
     const handleForm = async (e) => {
@@ -48,11 +49,26 @@ console.log(username.data)
         <>
             <div>
 
-            { (!username.data ) 
+            { (!username.data && !username.data2) 
              ? <h1 className='tituloSaludo'>Hey, {username.username}, No recent recommendations..</h1>
              : <h1 className='tituloSaludo'>Hey, {username.username}, these are your recent recommendations:</h1>                         
             }
                 <div className='ContainerProfile'>
+                {users2.reverse().map((e) => (
+                        <div className='cardProfile'>
+                            <h3>Details:</h3>
+                            <h4>Text: {e.text}</h4>
+                            <h4>Age: {e.ages}</h4>
+                            <h4>Music genre: {e.music}</h4>
+                            <h4>Hobbie: {e.hobbie}</h4>
+                            <h4>Language: {e.language}</h4>
+
+                            <h3>Recommendation:</h3>
+                            {e.opcion1 === "true"? <h4 className='option-selected'> 1: {e.recomendacion1}</h4> : <h4> 1: {e.recomendacion1}</h4>}
+                            {e.opcion2 === "true"? <h4 className='option-selected'> 2: {e.recomendacion2}</h4> : <h4> 2: {e.recomendacion1}</h4>}
+                            {e.opcion3 === "true"? <h4 className='option-selected'> 3: {e.recomendacion3}</h4> : <h4> 3: {e.recomendacion1}</h4>}
+                        </div>
+                    ))}
 
                     {users.reverse().map((e) => (
                         <div className='cardProfile'>
