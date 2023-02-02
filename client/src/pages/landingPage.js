@@ -4,6 +4,10 @@ import AuthConsumer from '../hooks/useAuth'
 
 import "../styles/styles.css"
 import logo from '../assets/LOGO_VIBEAI_2.png'
+import logo1 from '../assets/imgs/Logo_1.png'
+import logo2 from '../assets/imgs/Logo_2.png'
+import logo3 from '../assets/imgs/Logo_3.png'
+import logo4 from '../assets/imgs/Logo_4.png'
 
 const LandingPage = () => {
     const [{ isAuth }] = AuthConsumer();
@@ -12,7 +16,7 @@ const LandingPage = () => {
         <>
             <div className='allLanding'>
                 <div className='bodyLanding'>
-                    <img src={logo} alt='vibeAI' id='logoLanding'></img>
+                    <img src={logo3} alt='vibeAI' id='logoLanding'></img>
                     <div className='cardLanding'>
                         <h1 className='title'>The final Music Recommendation System</h1>
                         <br></br>
