@@ -5,6 +5,7 @@ import "../assets/wrong.svg"
 import "../assets/check.svg"
 import user from "../services/userService"
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
@@ -25,18 +26,7 @@ const SignUp = () => {
     const [uri2, setUri2] = useState("")
     const [uri3, setUri3] = useState("")
 
-    const logData = {
-        recomendacion1: recomendacion1,
-        recomendacion2: recomendacion2,
-        recomendacion3: recomendacion3,
-        opcion1: opcion1,
-        opcion2: opcion2,
-        opcion3: opcion3
-    }
-
     const handleOption = (e) => {
-        console.log(logData)
-        console.log(e)
         
         e === "opcion1"? setOpcion1("true") && setOpcion2("false") && setOpcion3("false") : setOpcion1("false")
         e === "opcion2"? setOpcion2("true") && setOpcion1("false") && setOpcion3("false") : setOpcion2("false")
@@ -45,6 +35,7 @@ const SignUp = () => {
 
     const handleForm = async (e) => {
         e.preventDefault()
+        
         await axios.post('http://musicrec-env.eba-tvtntc4p.us-east-1.elasticbeanstalk.com/recomendaciones', {
             text: text,
             gender: gender,
@@ -65,31 +56,63 @@ const SignUp = () => {
         .catch(function (error) {
         console.log(error);
         });
+        
     }
 
 
     const handleRecommendation = async (e) => {
-        console.log(logData)
-        e.preventDefault()
-        // fetch(`http://www.localhost:3000/user/add-recommendation/${user.getCurrentUser().email}`,
 
-            await axios.post(`#`,
-                {
-                    _id: user.getCurrentUser()._id,
-                    username: user.getCurrentUser().username,
-                    email: user.getCurrentUser().email,
-                    sexo: user.getCurrentUser().gender,
-                    ocupacion: user.getCurrentUser().occupation,
-                    data: logData
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log('Success:', data);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                })
-        // window.location.reload()
+        axios.put(`http://www.localhost:3000/user/add-recommendationv2/${user.getCurrentUser().email}`,
+        {
+            text: text,
+            gender: gender,
+            ages: ages,
+            music: musicGenre,
+            hobbie: hobbie,
+            language: language,
+            recomendacion1: recomendacion1,
+            recomendacion2: recomendacion2,
+            recomendacion3: recomendacion3,
+            opcion1: opcion1,
+            opcion2: opcion2,
+            opcion3: opcion3
+        })
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+
+        await axios.post(`http://dbmusic.cb2wgp0ktb7z.us-east-1.rds.amazonaws.com/`,
+            {
+                _id: user.getCurrentUser()._id,
+                username: user.getCurrentUser().username,
+                email: user.getCurrentUser().email,
+                sexo: user.getCurrentUser().gender,
+                ocupacion: user.getCurrentUser().occupation,
+                text: text,
+                gender: gender,
+                ages: ages,
+                music: musicGenre,
+                hobbie: hobbie,
+                language: language,
+                recomendacion1: recomendacion1,
+                recomendacion2: recomendacion2,
+                recomendacion3: recomendacion3,
+                opcion1: opcion1,
+                opcion2: opcion2,
+                opcion3: opcion3
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            })
+    
+       
     }
 
     return (
@@ -99,7 +122,7 @@ const SignUp = () => {
 
                 <form className='recForm'>
                     <div className='inputArtist'>
-                        <label>Text:</label><input type="text" name="text" className="input" placeholder="Less is more" onChange={(e) => setText(e.currentTarget.value)}></input>
+                        <label>Text:</label><input type="text" name="text" className="input" placeholder="Type anything you feel like..." onChange={(e) => setText(e.currentTarget.value)}></input>
                         <div className='select-input'>
                                 <span>Gender:</span>
                                 <select name="occupation" id="occupation" onChange={(event) => setGender(event.currentTarget.value)}>
@@ -191,10 +214,20 @@ const SignUp = () => {
             <>
             <h3>Here are your recommendations!</h3>
             <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <h4>{recomendacion1}</h4> <h4>{recomendacion2}</h4> <h4>{recomendacion3}</h4>
+            <>
+            <div>
+            <h4>{recomendacion1}</h4>
             <Spotify link={`https://open.spotify.com/artist/${uri1}?si=4472348a63dd4f83`} />
+            </div>
+            <div>
+            <h4>{recomendacion2}</h4>
             <Spotify link={`https://open.spotify.com/artist/${uri2}?si=4472348a63dd4f83`} />
+            </div>
+            <div>
+            <h4>{recomendacion3}</h4>
             <Spotify link={`https://open.spotify.com/artist/${uri3}?si=4472348a63dd4f83`} />
+            </div>
+            </>
             </div>
             
 
