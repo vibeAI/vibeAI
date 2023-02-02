@@ -4,6 +4,7 @@ import AuthConsumer from "../hooks/useAuth";
 import { Link, useNavigate } from 'react-router-dom'
 
 import "../styles/login.css"
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -20,12 +21,13 @@ const Login = () => {
 
     const handleForm = async (e) => {
         e.preventDefault()
-        console.log(account)
+        // console.log(account) Lo comento por seguridad, No tiene sentido publicar los datos de la cuenta por consola.
 
         const { isAdmin } = await user.login(account);
 
         dispatch({ type: isAdmin ? "admin" : "login" });
-        navigate("/home")
+        navigate("/home");
+        console.log("navegando");
     }
 
     return (

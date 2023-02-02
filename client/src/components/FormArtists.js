@@ -25,6 +25,8 @@ const SignUp = () => {
 
         const handleState = async (result) => {
 
+            console.log(result)
+
             setRecomendacion1(result.recomendacion1)
             setRecomendacion2(result.recomendacion2)
             setRecomendacion3(result.recomendacion3)
@@ -32,7 +34,7 @@ const SignUp = () => {
 
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
-            apiKey: "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",
+            apiKey: "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",
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
