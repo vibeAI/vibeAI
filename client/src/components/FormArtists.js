@@ -26,6 +26,8 @@ const SignUp = () => {
 
         const handleState = async (result) => {
 
+            console.log(result)
+
             setRecomendacion1(result.recomendacion1)
             setRecomendacion2(result.recomendacion2)
             setRecomendacion3(result.recomendacion3)

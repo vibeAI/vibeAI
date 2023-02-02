@@ -70,7 +70,16 @@ const SignUp = () => {
 
                         <div className="formRegister1">
                             <div className="inputbox">
-                                <input type="number" name="age" placeholder="Age (e.g. 25)" min="18" max="90" onChange={(e) => setAge(parseInt(e.currentTarget.value))} />
+                                {/* <input type="number" name="age" placeholder="Age (e.g. 25)" min="18" max="90" onChange={(e) => setAge(parseInt(e.currentTarget.value))} /> */}
+                                <input type="number" name="age" placeholder="Between 18 and 100 years." min="18" max="100" 
+                                    onChange={(e) => {
+                                    const age = parseInt(e.currentTarget.value);
+                                    if (age >= 18 && age <= 100) {
+                                        setAge(age);
+                                    } else {
+                                        toast.error("The age must be between 18 and 100 years.");
+                                    }
+                                    }} />
                                 <span>Age</span>
                                 <i></i>
                             </div>
