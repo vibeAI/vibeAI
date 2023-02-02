@@ -35,7 +35,9 @@ const SignUp = () => {
 
         const { Configuration, OpenAIApi } = require("openai");
         const configuration = new Configuration({
-            apiKey: "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",
+
+            apiKey: "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",
+
         });
         const openai = new OpenAIApi(configuration);
         const response = await openai.createCompletion({
