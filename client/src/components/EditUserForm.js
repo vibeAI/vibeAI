@@ -43,12 +43,15 @@ const EditUserForm = () => {
                 console.error('Error:', error);
             })
     }
-
+console.log(username.data)
     return (
         <>
-            <h1 className='tituloSaludo'>Hey, {username.username}, these are your recent recommendations:</h1>
             <div>
-                {/* <h1 className='tituloRecomendaciones'>Here are your recent recommendations:</h1> */}
+
+            { (!username.data ) 
+             ? <h1 className='tituloSaludo'>Hey, {username.username}, No recent recommendations..</h1>
+             : <h1 className='tituloSaludo'>Hey, {username.username}, these are your recent recommendations:</h1>                         
+            }
                 <div className='ContainerProfile'>
 
                     {users.reverse().map((e) => (
