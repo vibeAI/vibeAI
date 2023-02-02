@@ -49,7 +49,7 @@ console.log(username.data)
         <>
             <div>
 
-            { (!username.data && !username.data2) 
+            { (!username.data.length) 
              ? <h1 className='tituloSaludo'>Hey, {username.username}, No recent recommendations..</h1>
              : <h1 className='tituloSaludo'>Hey, {username.username}, these are your recent recommendations:</h1>                         
             }
