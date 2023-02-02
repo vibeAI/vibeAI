@@ -58,6 +58,7 @@ body {
     font-weight: 600;
     font-size: 20px;
     padding: 0.8em 1.3em 0.8em 0.9em;
+    margin-top: 20px;
     color: var(--color1);
     background: linear-gradient(to right, var(--color5), var(--color4), var(--color4));
     /* background: linear-gradient(to right, #0f0c29, #302b63, #24243e); */
