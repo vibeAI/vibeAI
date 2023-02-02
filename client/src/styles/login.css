@@ -44,7 +44,7 @@ h1 {
 
 .inputbox input:valid~span,
 .inputbox input:focus~span {
-    color: #5fb2b8;
+    color: var(--color4);
     transform: translateX(-10px) translateY(-34px);
     font-size: 0, 75em;
 }
@@ -55,7 +55,7 @@ h1 {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: #5fb2b8;
+    background: var(--color4);
     border-radius: 4px;
     transition: 0.5s;
     pointer-events: none;

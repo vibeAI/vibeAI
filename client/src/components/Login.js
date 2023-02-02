@@ -4,7 +4,7 @@ import AuthConsumer from "../hooks/useAuth";
 import { Link, useNavigate } from 'react-router-dom'
 
 import "../styles/login.css"
-import { toast } from 'react-toastify';
+
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -27,7 +27,6 @@ const Login = () => {
 
         dispatch({ type: isAdmin ? "admin" : "login" });
         navigate("/home");
-        console.log("navegando");
     }
 
     return (
