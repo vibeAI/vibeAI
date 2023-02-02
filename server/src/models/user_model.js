@@ -29,9 +29,9 @@ const dataSchema2 = new mongoose.Schema({
     recomendacion1: String,
     recomendacion2: String,
     recomendacion3: String,
-    1: Boolean,
-    2: Boolean,
-    3: Boolean
+    opcion1: String,
+    opcion2: String,
+    opcion3: String
 });
 
 const userSchema = new mongoose.Schema({
